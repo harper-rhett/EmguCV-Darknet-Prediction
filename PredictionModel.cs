@@ -1,18 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Emgu.CV.Dnn;
+﻿using Emgu.CV.Dnn;
 using Emgu.CV;
 using Emgu.CV.Util;
 using System.Drawing;
 using Emgu.CV.Structure;
-using System.IO;
 
 namespace DarknetPrediction;
 
-public class DarknetPrediction
+public class PredictionModel
 {
     /// <summary>
     /// Model to load
@@ -39,7 +33,7 @@ public class DarknetPrediction
     /// <param name="configPath">Path to the config file.</param>
     /// <param name="backend">Preferred computation implementation.</param>
     /// <param name="target">Preferred computation target.</param>
-    public DarknetPrediction(string labelsPath, string weightsPath, string configPath, PreferredBackend backend = PreferredBackend.OpenCV, PreferredTarget target = PreferredTarget.Cpu)
+    public PredictionModel(string labelsPath, string weightsPath, string configPath, PreferredBackend backend = PreferredBackend.OpenCV, PreferredTarget target = PreferredTarget.Cpu)
     {
         Enum.TryParse(backend.ToString(), out Emgu.CV.Dnn.Backend b);
         Enum.TryParse(target.ToString(), out Emgu.CV.Dnn.Target t);
